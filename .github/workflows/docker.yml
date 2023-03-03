@@ -1,13 +1,14 @@
-# This is a basic workflow to help you get started with Actions
+name: Create docker container
 
-name: Release version
-
-# Controls when the workflow will run
+# Runs on a push of a tag or on pull request on main
 on:
-  # Triggers the workflow on push of tag
+  # Build docker image and publish new version
   push:
     tags: ['v*.*.*']
-
+  # Build docker image
+  pull_request:
+    branches: [main]
+    
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
