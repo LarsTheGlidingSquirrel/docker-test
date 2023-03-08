@@ -1,19 +1,14 @@
-name: Create docker container
+name: Create & push docker container
 
-# Runs on a push of a tag or on pull request on main
+# Runs on a push of a version tag to any branch
 on:
-  # Build docker image and publish new version
   push:
     tags: ['v*.*.*']
-  # Build docker image
-  pull_request:
-    branches: [main]
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
